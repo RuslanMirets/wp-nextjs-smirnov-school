@@ -3,12 +3,10 @@ import PostsList from "@/src/components/posts-list/PostsList";
 import QueryLog from "@/src/components/query-log/QueryLog";
 import RequestTime from "@/src/components/request-time/RequestTime";
 import { PostService } from "@/src/services/post.service";
-import { useRenderTimeStore } from "@/src/store";
 import { IPosts } from "@/src/types/post.interface";
 import Container from "@/src/ui/container/Container";
 import Heading from "@/src/ui/heading/Heading";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 
 const Blog = () => {
 	const { data, isLoading } = useQuery(["posts"], PostService.getAll);
