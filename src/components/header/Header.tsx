@@ -18,7 +18,6 @@ const menuLinks: IMenuLinks[] = [
 	{ title: "Основы CG", url: "/cgb" },
 	{ title: "Товары", url: "/products" },
 	{ title: "Метрики", url: "/metrics", target: "_blank" },
-	{ title: "Тест", url: "/test" },
 ];
 
 const Header = () => {
