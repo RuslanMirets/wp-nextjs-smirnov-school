@@ -9,6 +9,7 @@ import {
 import { useState } from "react";
 import { queryClientConfig } from "@/src/config/query-client.config";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { SessionProvider } from "next-auth/react";
 
 export default function App({ Component, pageProps }: AppProps) {
 	const [queryClient] = useState(() => new QueryClient(queryClientConfig));
@@ -16,8 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Hydrate state={pageProps.dehydratedState}>
-				<CssBaseline />
-				<Component {...pageProps} />
+				<SessionProvider>
+					<CssBaseline />
+					<Component {...pageProps} />
+				</SessionProvider>
 			</Hydrate>
 			<ReactQueryDevtools initialIsOpen={false} />
 		</QueryClientProvider>
