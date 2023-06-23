@@ -19,7 +19,7 @@ const Products = () => {
 	const queryCount = data?.extensions.queryLog.queryCount;
 	const totalTime = data?.extensions.queryLog.totalTime;
 	const graphqlSmartCache =
-		data?.extensions.graphqlSmartCache.graphqlObjectCache.message;
+		data?.extensions.graphqlSmartCache?.graphqlObjectCache.message;
 
 	return (
 		<Layout title="Товары">
@@ -30,11 +30,13 @@ const Products = () => {
 				) : (
 					<>
 						<RequestTime requestTime={requestTime} />
-						<QueryLog
-							queryCount={queryCount}
-							totalTime={totalTime}
-							graphqlSmartCache={graphqlSmartCache}
-						/>
+						{queryCount && (
+							<QueryLog
+								queryCount={queryCount}
+								totalTime={totalTime}
+								graphqlSmartCache={graphqlSmartCache}
+							/>
+						)}
 						<ul className={styles.list}>
 							{products.map((product) => (
 								<li key={product.databaseId}>

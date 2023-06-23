@@ -23,7 +23,7 @@ const Post = () => {
 	const queryCount = data?.extensions.queryLog.queryCount;
 	const totalTime = data?.extensions.queryLog.totalTime;
 	const graphqlSmartCache =
-		data?.extensions.graphqlSmartCache.graphqlObjectCache.message;
+		data?.extensions.graphqlSmartCache?.graphqlObjectCache.message;
 
 	return (
 		<Layout title={post?.title || ""}>
@@ -33,11 +33,13 @@ const Post = () => {
 				) : (
 					<>
 						<RequestTime requestTime={requestTime} />
-						<QueryLog
-							queryCount={queryCount}
-							totalTime={totalTime}
-							graphqlSmartCache={graphqlSmartCache}
-						/>
+						{queryCount && (
+							<QueryLog
+								queryCount={queryCount}
+								totalTime={totalTime}
+								graphqlSmartCache={graphqlSmartCache}
+							/>
+						)}
 						<article>
 							<Heading>{post.title}</Heading>
 							<div

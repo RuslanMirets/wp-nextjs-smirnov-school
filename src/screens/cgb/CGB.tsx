@@ -18,7 +18,7 @@ const CGB = () => {
 	const queryCount = data?.extensions.queryLog.queryCount;
 	const totalTime = data?.extensions.queryLog.totalTime;
 	const graphqlSmartCache =
-		data?.extensions.graphqlSmartCache.graphqlObjectCache.message;
+		data?.extensions.graphqlSmartCache?.graphqlObjectCache.message;
 
 	return (
 		<Layout title={page?.title || ""}>
@@ -28,11 +28,13 @@ const CGB = () => {
 				) : (
 					<>
 						<RequestTime requestTime={requestTime} />
-						<QueryLog
-							queryCount={queryCount}
-							totalTime={totalTime}
-							graphqlSmartCache={graphqlSmartCache}
-						/>
+						{queryCount && (
+							<QueryLog
+								queryCount={queryCount}
+								totalTime={totalTime}
+								graphqlSmartCache={graphqlSmartCache}
+							/>
+						)}
 						<Heading>{page.title}</Heading>
 						<div className="mb-10">
 							<h2
