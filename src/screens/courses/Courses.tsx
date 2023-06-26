@@ -7,8 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 const Courses = () => {
 	const { data, isLoading } = useQuery(["courses"], CourseService.getAll);
 
-	console.log(data);
-
 	return (
 		<Layout title="Курсы">
 			<Container>

@@ -4,7 +4,7 @@ export const PostService = {
 	async getAll() {
 		const data = await fetchData(`
     query getAll{
-      posts(where: {categoryNotIn: "366"}) {
+      posts(where: {categoryNotIn: "366"}, first: 99) {
         nodes {
 					databaseId
           slug
